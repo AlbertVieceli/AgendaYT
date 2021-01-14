@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.DAO;
 import model.JavaBeans;
 
-@WebServlet(urlPatterns = { "/Controller", "/main", "/insert" }) // REQUESI합ES DO SERVLET "caminhos em formularios, links,
+@WebServlet(urlPatterns = { "/Controller", "/main", "/insert" }) // REQUESIcES DO SERVLET "caminhos em formularios, links,
 														// botoes..."
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -49,6 +49,10 @@ public class Controller extends HttpServlet {
 		contato.setNome(request.getParameter("nome"));
 		contato.setFone(request.getParameter("fone"));
 		contato.setEmail(request.getParameter("email"));
+		//invocar o método inserirContato passando o obj contato
+		dao.inserirContato(contato);
+		//redirecionar para agenda.jsp
+		response.sendRedirect("main");
 	}
 
 }
