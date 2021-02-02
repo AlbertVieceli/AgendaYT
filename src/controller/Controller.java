@@ -1,11 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import model.DAO;
 import model.JavaBeans;
 
@@ -37,7 +40,15 @@ public class Controller extends HttpServlet {
 	// LISTAR CONTATOS
 	protected void contatos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect("Agenda.jsp");
+		// Criando um obj que ira receber os dados javabeans
+		ArrayList<JavaBeans> lista = dao.listarContatos();
+		//teste de recebimento da lista
+		for (int i = 0; i < lista.size(); i++) {
+			System.out.println(lista.get(i).getIdcon());
+			System.out.println(lista.get(i).getNome());
+			System.out.println(lista.get(i).getFone());
+			System.out.println(lista.get(i).getEmail());
+		}
 	}
 	// NOVO CONTATO
 	protected void novoContato(HttpServletRequest request, HttpServletResponse response)
